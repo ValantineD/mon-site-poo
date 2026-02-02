@@ -8,6 +8,7 @@
 <body>
 
 <h1>Voici ma page</h1>
+<h2> Voici mon h2</h2>
 
 </body>
 </html>
