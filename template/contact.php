@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>contact</title>
-</head>
-<body>
-
-<h1>
-    <?= $title ?>
-</h1>
+<h1> <?= $title ?> </h1>
 
 <form action="" method="post">
 
@@ -35,6 +24,3 @@
     <button type="submit">Soumettre</button>
 
 </form>
-
-</body>
-</html>

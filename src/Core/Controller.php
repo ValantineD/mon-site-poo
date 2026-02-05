@@ -8,9 +8,15 @@ abstract class Controller
     {
         extract($params);
 
+        ob_start();
         require dirname(__DIR__) . '/../template/' . $view . '.php';
+        $contentFile = ob_get_clean();
+
+        require dirname(__DIR__) . '/../template/layout.php';
     }
-    protected function redirect(string $url): void {
+
+    protected function redirect(string $url): void
+    {
 
         header("HTTP/1.1 301 Moved Permanently");
         header('Location: ' . $url);
