@@ -30,3 +30,10 @@ create TABLE `contact` (
                         subject VARCHAR(255) NOT NULL,
                         message TEXT NOT NULL
 );
+
+create TABLE `product` (
+                           id INT PRIMARY KEY AUTO_INCREMENT,
+                           title VARCHAR(255) NOT NULL,
+                           description TEXT NOT NULL,
+                           price INT NOT NULL
+);

@@ -9,8 +9,9 @@ class App
         $path = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) ?? '/';
 
         $routes = [
-          "/" => [\App\Controller\HomeController::class, 'index'],
-          "/contact" => [\App\Controller\HomeController::class, 'contact'],
+            "/" => [\App\Controller\HomeController::class, 'index'],
+            "/contact" => [\App\Controller\ContactController::class, 'contact'],
+            "/product/new" => [\App\Controller\ProductController::class, 'new']
         ];
 
         if (isset ($routes[$path])) {
