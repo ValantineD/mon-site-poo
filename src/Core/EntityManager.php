@@ -8,9 +8,7 @@ class EntityManager
 {
     private ?Database $db;
 
-    /**
-     * On stocke les objets "en attente" d'être sauvegardés
-     */
+
     private array $toPersist = [];
 
     public function __construct()
@@ -18,18 +16,13 @@ class EntityManager
         $this->db = new Database();
     }
 
-    /**
-     * persist() = "je veux sauvegarder cet objet"
-     * (mais je n'exécute pas encore la requête SQL)
-     */
+
     public function persist(object $entity): void
     {
         $this->toPersist[] = $entity;
     }
 
-    /**
-     * flush() = exécute vraiment les requêtes SQL
-     */
+
     public function flush(): void
     {
         // Rien à enregistrer → on sort immédiatement
@@ -115,5 +108,17 @@ class EntityManager
 
         $data['id'] = $entity->getId(); // pour le WHERE
         $stmt->execute($data);
+    }
+
+    public function delete(object $entity): void
+    {
+        $reflection = new ReflectionClass($entity);
+        $table = strtolower($reflection->getShortName());
+
+        $stmt = $this->db->prepare("DELETE FROM {$table} WHERE id = :id");
+
+        $stmt->execute([
+            'id' => $entity->getId()
+        ]);
     }
 }

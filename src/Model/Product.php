@@ -2,12 +2,19 @@
 
 namespace App\Model;
 
+use DateTime;
+
 class Product
 {
     private ?int $id = null;
+    private ?string $picture = null;
     private string $title;
+    private string $slug;
     private string $description;
     private int $price;
+    private string $created_at;
+    private string $updated_at;
+
 
     public function getId(): ?int
     {
@@ -20,6 +27,19 @@ class Product
         return $this;
     }
 
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): Product
+    {
+        $this->picture = $picture;
+        return $this;
+    }
+
+
+
     public function getTitle(): string
     {
         return $this->title;
@@ -30,6 +50,18 @@ class Product
         $this->title = $title;
         return $this;
     }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): Product
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
 
     public function getDescription(): string
     {
@@ -52,4 +84,28 @@ class Product
         $this->price = $price;
         return $this;
     }
+
+    public function getCreatedAt(): DateTime
+    {
+        return new DateTime($this->created_at);
+    }
+
+    public function setCreatedAt(string $created_at): Product
+    {
+        $this->created_at = $created_at;
+        return $this;
+    }
+
+    public function getUpdatedAt(): DateTime
+    {
+        return new DateTime($this->updated_at);
+    }
+
+    public function setUpdatedAt(string $updated_at): Product
+    {
+        $this->updated_at = $updated_at;
+        return $this;
+    }
+
+
 }
